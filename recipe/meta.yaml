@@ -1,20 +1,17 @@
-{% set name = "python-oauth2" %}
 {% set version = "1.1.0" %}
-{% set sha256 = "b24da812837c19183df1924e80a22ba0a1869582dea8b04a9ecd807b04dbc525" %}
 
 package:
-  name: {{ name|lower }}
+  name: python-oauth2
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/p/python-oauth2/python-oauth2-{{ version }}.tar.gz
+  sha256: b24da812837c19183df1924e80a22ba0a1869582dea8b04a9ecd807b04dbc525
 
 build:
+  number: 2
   noarch: python
-  number: 1
-  script: python -m pip install --no-deps --ignore-installed .
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
@@ -31,8 +28,7 @@ about:
   home: https://github.com/wndhydrnt/python-oauth2
   license: MIT
   license_family: MIT
-  # license_file is missing from sdists, though it is on GitHub
-  # license_file: LICENSE
+  license_file: LICENSE
   summary: 'OAuth 2.0 provider written in python'
 
   description: |
@@ -44,3 +40,4 @@ about:
 extra:
   recipe-maintainers:
     - minrk
+    - ocefpaf
